@@ -1,0 +1,48 @@
+.marquee {
+  overflow: hidden;
+  height: 180px;
+  position: relative;
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  $duration: 30s;
+  .ticker-wrapper__first-half, .ticker-wrapper__second-half {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    animation: ticker1 calc($duration / 2) normal linear forwards, ticker $duration calc($duration / 2) infinite linear forwards;
+    z-index: -1;
+  }
+  .ticker-wrapper__second-half {
+    animation: ticker $duration infinite linear forwards;
+  }
+  &::before {
+    content: "";
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.50) 75%, rgba(0,212,255,0) 100%);
+    height: 100%;
+    width: 10%;
+    display: block;
+  }
+  &::after {
+    content: "";
+    background: rgb(255,255,255);
+    background: linear-gradient(270deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.50) 75%, rgba(0,212,255,0) 100%);
+    height: 100%;
+    width: 10%;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
